@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Bazaar | Premium Coworking & Virtual Office Spaces across India</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            900: '#064e3b',
+                            dark: '#0f172a',
+                            accent: '#3b82f6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.96) 0%, rgba(30, 41, 59, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px -10px rgba(16, 185, 129, 0.2);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 text-white text-xs md:text-sm font-medium py-2 px-4 text-center">
+        <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <span><i class="fa-solid fa-fire mr-1 text-amber-300"></i> Pan-India Coverage: 500+ Verified Coworking & Virtual Office Spaces across Major Metros</span>
+            <div class="flex items-center space-x-4">
+                <a href="tel:7906824135" class="hover:underline flex items-center gap-1 font-bold">
+                    <i class="fa-solid fa-phone"></i> Helpline: +91 7906824135
+                </a>
+                <a href="https://wa.me/917906824135?text=Hi%20Space%20Bazaar,%20I%20am%20looking%20for%20an%20office%20space" target="_blank" class="bg-white text-emerald-800 px-2.5 py-0.5 rounded text-xs font-bold hover:bg-slate-100 transition shadow">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp Chat
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 glass-nav">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-gradient-to-tr from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center text-slate-950 font-black shadow-lg shadow-emerald-500/30">
+                    <i class="fa-solid fa-city text-xl"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-200 to-emerald-400 bg-clip-text text-transparent">Space Bazaar</span>
+                    <span class="block text-[10px] text-emerald-400 tracking-widest uppercase font-semibold">Workspace & Virtual Office Hub</span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <a href="#cities" class="hover:text-emerald-400 transition">Cities</a>
+                <a href="#listings" class="hover:text-emerald-400 transition">Explore Spaces</a>
+                <a href="#virtual-office" class="hover:text-emerald-400 transition">Virtual Office & GST</a>
+                <a href="#contact" class="hover:text-emerald-400 transition">Contact</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <button onclick="openAddModal()" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-slate-950 font-extrabold text-xs md:text-sm px-4 py-2.5 rounded-lg shadow-lg shadow-emerald-500/20 transition flex items-center gap-2">
+                    <i class="fa-solid fa-plus-circle"></i>
+                    <span>List Your Space</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg py-20 lg:py-28 px-4 relative border-b border-slate-800">
+        <div class="container mx-auto max-w-5xl text-center">
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold mb-6">
+                <i class="fa-solid fa-shield-check"></i> 100% Legal Documentation for GST & Company Registration
+            </span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+                Discover Prime <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-blue-400 bg-clip-text text-transparent">Coworking & Virtual Offices</span> in All Major Cities
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-3xl mx-auto font-normal">
+                Explore comprehensive listings across <strong class="text-white">Delhi NCR (150+ spaces)</strong>, Mumbai, Bengaluru, Hyderabad, Pune, Chennai, Kolkata, Ahmedabad and more.
+            </p>
+
+            <!-- Search & Filter Bar -->
+            <div class="bg-slate-900/95 p-4 md:p-6 rounded-2xl border border-slate-700 shadow-2xl backdrop-blur-md max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <!-- City Filter -->
+                    <div class="relative">
+                        <label class="block text-xs font-semibold text-slate-400 mb-1 text-left"><i class="fa-solid fa-location-dot text-emerald-400 mr-1"></i> Select City</label>
+                        <select id="searchCity" onchange="filterListings()" class="w-full bg-slate-800 border border-slate-700 text-white text-sm rounded-lg p-3 focus:ring-2 focus:ring-emerald-500 outline-none">
+                            <option value="All">All Cities (Pan India)</option>
+                            <option value="Delhi">Delhi NCR (150+ Spaces)</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Bengaluru">Bengaluru</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Pune">Pune</option>
+                            <option value="Chennai">Chennai</option>
+                            <option value="Kolkata">Kolkata</option>
+                            <option value="Ahmedabad">Ahmedabad</option>
+                            <option value="Jaipur">Jaipur</option>
+                            <option value="Chandigarh">Chandigarh</option>
+                        </select>
+                    </div>
+
+                    <!-- Type Filter -->
+                    <div class="relative">
+                        <label class="block text-xs font-semibold text-slate-400 mb-1 text-left"><i class="fa-solid fa-briefcase text-emerald-400 mr-1"></i> Space Type</label>
+                        <select id="searchType" onchange="filterListings()" class="w-full bg-slate-800 border border-slate-700 text-white text-sm rounded-lg p-3 focus:ring-2 focus:ring-emerald-500 outline-none">
+                            <option value="All">All Space Types</option>
+                            <option value="Coworking Desk">Dedicated Coworking Desk</option>
+                            <option value="Virtual Office">Virtual Office (GST/Reg)</option>
+                            <option value="Private Cabin">Private Office Cabin</option>
+                            <option value="Meeting Room">Conference / Meeting Room</option>
+                        </select>
+                    </div>
+
+                    <!-- Keyword Search -->
+                    <div class="relative">
+                        <label class="block text-xs font-semibold text-slate-400 mb-1 text-left"><i class="fa-solid fa-magnifying-glass text-emerald-400 mr-1"></i> Locality / Brand</label>
+                        <input type="text" id="searchKeyword" onkeyup="filterListings()" placeholder="e.g. CP, WeWork, Indiranagar" class="w-full bg-slate-800 border border-slate-700 text-white text-sm rounded-lg p-3 focus:ring-2 focus:ring-emerald-500 outline-none placeholder-slate-500">
+                    </div>
+
+                    <!-- Direct Helpline CTA -->
+                    <div class="flex items-end">
+                        <a href="tel:7906824135" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-slate-950 font-black p-3 rounded-lg shadow-md transition text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-phone-volume"></i>
+                            <span>Call 7906824135</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Metrics Stats -->
+    <section class="py-10 bg-slate-900/60 border-b border-slate-800">
+        <div class="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="p-4 rounded-xl bg-slate-800/40 border border-slate-800">
+                <div class="text-3xl font-extrabold text-emerald-400">150+</div>
+                <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">Delhi NCR Workspaces</div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-800/40 border border-slate-800">
+                <div class="text-3xl font-extrabold text-teal-400">500+</div>
+                <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">Total Pan-India Listings</div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-800/40 border border-slate-800">
+                <div class="text-3xl font-extrabold text-blue-400">100%</div>
+                <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">GST & MCA Compliance</div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-800/40 border border-slate-800">
+                <div class="text-3xl font-extrabold text-amber-400">₹0</div>
+                <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-medium">Brokerage Fees</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Cities Grid Section -->
+    <section id="cities" class="py-16 px-4 border-b border-slate-800/80">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white">Explore Major City Hubs</h2>
+                    <p class="text-slate-400 text-sm mt-1">Select a city to filter premium spaces instantly</p>
+                </div>
+                <span class="text-xs text-emerald-400 font-semibold mt-2 md:mt-0"><i class="fa-solid fa-circle-check"></i> Instant Booking & Support Available</span>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                <!-- Delhi Card -->
+                <div onclick="selectCityFilter('Delhi')" class="cursor-pointer bg-slate-900 border border-slate-800 hover:border-emerald-500/50 p-4 rounded-xl text-center card-hover group">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-emerald-500/10 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-slate-950 rounded-full flex items-center justify-center transition">
+                        <i class="fa-solid fa-landmark text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm">Delhi NCR</h3>
+                    <p class="text-xs text-emerald-400 font-medium mt-1">150+ Spaces</p>
+                </div>
+
+                <!-- Mumbai Card -->
+                <div onclick="selectCityFilter('Mumbai')" class="cursor-pointer bg-slate-900 border border-slate-800 hover:border-emerald-500/50 p-4 rounded-xl text-center card-hover group">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-blue-500/10 text-blue-400 group-hover:bg-blue-500 group-hover:text-slate-950 rounded-full flex items-center justify-center transition">
+                        <i class="fa-solid fa-city text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm">Mumbai</h3>
+                    <p class="text-xs text-slate-400 font-medium mt-1">85+ Spaces</p>
+                </div>
+
+                <!-- Bengaluru Card -->
+                <div onclick="selectCityFilter('Bengaluru')" class="cursor-pointer bg-slate-900 border border-slate-800 hover:border-emerald-500/50 p-4 rounded-xl text-center card-hover group">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-amber-500/10 text-amber-400 group-hover:bg-amber-500 group-hover:text-slate-950 rounded-full flex items-center justify-center transition">
+                        <i class="fa-solid fa-laptop-code text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm">Bengaluru</h3>
+                    <p class="text-xs text-slate-400 font-medium mt-1">110+ Spaces</p>
+                </div>
+
+                <!-- Hyderabad Card -->
+                <div onclick="selectCityFilter('Hyderabad')" class="cursor-pointer bg-slate-900 border border-slate-800 hover:border-emerald-500/50 p-4 rounded-xl text-center card-hover group">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-teal-500/10 text-teal-400 group-hover:bg-teal-500 group-hover:text-slate-950 rounded-full flex items-center justify-center transition">
+                        <i class="fa-solid fa-building-columns text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm">Hyderabad</h3>
+                    <p class="text-xs text-slate-400 font-medium mt-1">65+ Spaces</p>
+                </div>
+
+                <!-- Pune Card -->
+                <div onclick="selectCityFilter('Pune')" class="cursor-pointer bg-slate-900 border border-slate-800 hover:border-emerald-500/50 p-4 rounded-xl text-center card-hover group">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-purple-500/10 text-purple-400 group-hover:bg-purple-500 group-hover:text-slate-950 rounded-full flex items-center justify-center transition">
+                        <i class="fa-solid fa-industry text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm">Pune</h3>
+                    <p class="text-xs text-slate-400 font-medium mt-1">50+ Spaces</p>
+                </div>
+
+                <!-- All Metros Card -->
+                <div onclick="selectCityFilter('All')" class="cursor-pointer bg-slate-900 border border-slate-800 hover:border-emerald-500/50 p-4 rounded-xl text-center card-hover group">
+                    <div class="w-12 h-12 mx-auto mb-3 bg-rose-500/10 text-rose-400 group-hover:bg-rose-500 group-hover:text-slate-950 rounded-full flex items-center justify-center transition">
+                        <i class="fa-solid fa-earth-asia text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm">All Metros</h3>
+                    <p class="text-xs text-slate-400 font-medium mt-1">500+ Spaces</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Workspace Listings Section -->
+    <section id="listings" class="py-16 px-4 bg-slate-950">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white">Featured Office & Coworking Listings</h2>
+                    <p class="text-slate-400 text-sm mt-1">Browse verified office spots with transparent pricing and instant documentation</p>
+                </div>
+                <div class="mt-4 md:mt-0 text-sm text-slate-400">
+                    Showing <span id="activeCount" class="text-white font-bold">0</span> Spaces
+                </div>
+            </div>
+
+            <!-- Dynamic Listings Grid -->
+            <div id="listingsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cards injected via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Office Special Banner -->
+    <section id="virtual-office" class="py-16 px-4 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-y border-slate-800">
+        <div class="container mx-auto max-w-5xl flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="space-y-4 max-w-2xl">
+                <span class="text-amber-400 font-semibold text-xs tracking-wider uppercase"><i class="fa-solid fa-certificate mr-1"></i> Virtual Office Express</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white">Need GST or Company Registration Address in Delhi NCR or Metros?</h2>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    Get legitimate business address documentation including NOC, Electricity Bill, and Lease/Rent Agreement delivered within 24 hours. Perfect for startups and e-commerce sellers.
+                </p>
+                <div class="flex flex-wrap gap-4 text-xs font-semibold text-slate-300">
+                    <span class="flex items-center gap-1"><i class="fa-solid fa-check text-emerald-400"></i> GST Registration Guaranteed</span>
+                    <span class="flex items-center gap-1"><i class="fa-solid fa-check text-emerald-400"></i> MCA Company Filing Ready</span>
+                    <span class="flex items-center gap-1"><i class="fa-solid fa-check text-emerald-400"></i> Courier & Mail Handling</span>
+                </div>
+            </div>
+            <div class="bg-slate-950 p-6 rounded-2xl border border-slate-700 w-full md:w-auto text-center space-y-4 shadow-xl">
+                <div class="text-slate-400 text-xs uppercase tracking-wider font-semibold">Plans Starting At</div>
+                <div class="text-3xl font-extrabold text-white">₹999 <span class="text-sm text-slate-400 font-normal">/ month</span></div>
+                <a href="https://wa.me/917906824135?text=Hi%20Space%20Bazaar,%20I%20want%20to%20buy%20a%20Virtual%20Office%20plan%20for%20GST/Registration" target="_blank" class="block bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-black px-6 py-3 rounded-lg shadow-lg transition">
+                    <i class="fa-brands fa-whatsapp mr-2"></i> Get Docs on WhatsApp
+                </a>
+                <a href="tel:7906824135" class="block text-xs text-slate-400 hover:text-white transition">Helpline: +91 7906824135</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Workspace Modal -->
+    <div id="addModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-slate-900 border border-slate-700 rounded-2xl p-6 md:p-8 max-w-lg w-full shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeAddModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-white mb-2">List Your Workspace</h3>
+            <p class="text-slate-400 text-xs mb-6">List your coworking desk, private cabin or virtual office on Space Bazaar instantly.</p>
+
+            <form id="addListingForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Space Title / Brand Name *</label>
+                    <input type="text" id="title" required placeholder="e.g. Awfis Connaught Place" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:ring-2 focus:ring-emerald-500 outline-none">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">City *</label>
+                        <select id="city" required class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:ring-2 focus:ring-emerald-500 outline-none">
+                            <option value="Delhi">Delhi NCR</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Bengaluru">Bengaluru</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Pune">Pune</option>
+                            <option value="Chennai">Chennai</option>
+                            <option value="Kolkata">Kolkata</option>
+                            <option value="Ahmedabad">Ahmedabad</option>
+                            <option value="Jaipur">Jaipur</option>
+                            <option value="Chandigarh">Chandigarh</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Category *</label>
+                        <select id="type" required class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:ring-2 focus:ring-emerald-500 outline-none">
+                            <option value="Coworking Desk">Coworking Desk</option>
+                            <option value="Virtual Office">Virtual Office</option>
+                            <option value="Private Cabin">Private Cabin</option>
+                            <option value="Meeting Room">Meeting Room</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Locality & Address *</label>
+                    <input type="text" id="locality" required placeholder="e.g. MG Road, Sector 14, Gurugram" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:ring-2 focus:ring-emerald-500 outline-none">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Price per Month (₹) *</label>
+                        <input type="number" id="price" required placeholder="e.g. 5999" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:ring-2 focus:ring-emerald-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Image URL (Optional)</label>
+                        <input type="url" id="image" placeholder="https://images.unsplash.com/..." class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:ring-2 focus:ring-emerald-500 outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Contact Phone Number *</label>
+                    <input type="text" id="contactNumber" value="7906824135" required class="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-sm text-white focus:ring-2 focus:ring-emerald-500 outline-none">
+                </div>
+
+                <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-extrabold p-3 rounded-lg transition shadow-lg mt-4">
+                    Publish Listing Now
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact & Footer -->
+    <footer id="contact" class="bg-slate-900 border-t border-slate-800 pt-12 pb-8 px-4">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div class="space-y-3">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center text-slate-950 font-black">SB</div>
+                    <span class="text-xl font-bold text-white">Space Bazaar</span>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    India's prime destination for coworking desks, private cabins, and 100% GST-compliant virtual offices across Delhi NCR (150+ spaces) and all major Indian metropolises.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-sm font-bold text-white mb-3">Delhi NCR Key Hubs</h4>
+                <ul class="text-xs text-slate-400 space-y-2">
+                    <li><a href="#" onclick="selectCityFilter('Delhi')" class="hover:text-white">Connaught Place, New Delhi</a></li>
+                    <li><a href="#" onclick="selectCityFilter('Delhi')" class="hover:text-white">DLF Cyber City, Gurugram</a></li>
+                    <li><a href="#" onclick="selectCityFilter('Delhi')" class="hover:text-white">Noida Sector 62 & Expressway</a></li>
+                    <li><a href="#" onclick="selectCityFilter('Delhi')" class="hover:text-white">Nehru Place & Aerocity</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-sm font-bold text-white mb-3">Office Categories</h4>
+                <ul class="text-xs text-slate-400 space-y-2">
+                    <li><a href="#listings" class="hover:text-white">Dedicated Coworking Desks</a></li>
+                    <li><a href="#listings" class="hover:text-white">Virtual Office for GST Registration</a></li>
+                    <li><a href="#listings" class="hover:text-white">Private Executive Suites</a></li>
+                    <li><a href="#listings" class="hover:text-white">Conference & Meeting Rooms</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-sm font-bold text-white mb-3">Direct Connect</h4>
+                <div class="space-y-3 text-xs text-slate-300">
+                    <a href="tel:7906824135" class="flex items-center gap-2 hover:text-emerald-400 transition">
+                        <i class="fa-solid fa-phone text-emerald-400"></i> +91 7906824135
+                    </a>
+                    <a href="https://wa.me/917906824135" target="_blank" class="flex items-center gap-2 hover:text-emerald-400 transition">
+                        <i class="fa-brands fa-whatsapp text-emerald-500"></i> WhatsApp: 7906824135
+                    </a>
+                    <div class="flex items-center gap-2 text-slate-400">
+                        <i class="fa-solid fa-clock text-amber-500"></i> Mon - Sat: 9:00 AM - 8:00 PM
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto border-t border-slate-800 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+            <p>© 2026 Space Bazaar. All rights reserved. Servicing 500+ Office Locations Nationwide.</p>
+            <div class="flex space-x-4 mt-3 sm:mt-0">
+                <a href="tel:7906824135" class="hover:text-slate-300">Helpline: +91 7906824135</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Data & Comprehensive Listings -->
+    <script>
+        const initialSpaces = [
+            // Delhi NCR (Featuring major Delhi, Gurgaon, Noida hubs)
+            {
+                id: 1,
+                title: "Awfis Executive Hub - Connaught Place",
+                city: "Delhi",
+                locality: "Barakhamba Road, Connaught Place, New Delhi",
+                type: "Coworking Desk",
+                price: 6999,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600",
+                badge: "CP Metro Hub"
+            },
+            {
+                id: 2,
+                title: "Regus Premium Corporate Virtual Office",
+                city: "Delhi",
+                locality: "DLF Cyber City, Phase 2, Gurgaon, Delhi NCR",
+                type: "Virtual Office",
+                price: 1299,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=600",
+                badge: "100% GST Approved"
+            },
+            {
+                id: 3,
+                title: "WeWork Horizon Executive Suite",
+                city: "Delhi",
+                locality: "Golf Course Road, Sector 43, Gurugram",
+                type: "Private Cabin",
+                price: 14999,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=600",
+                badge: "Luxury Workspace"
+            },
+            {
+                id: 4,
+                title: "Innov8 Tech Coworking Center",
+                city: "Delhi",
+                locality: "Sector 62, Electronic City, Noida",
+                type: "Coworking Desk",
+                price: 4999,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&q=80&w=600",
+                badge: "High-Speed WiFi"
+            },
+            {
+                id: 5,
+                title: "Aerocity Smart Virtual Address",
+                city: "Delhi",
+                locality: "Worldmark 1, Aerocity, New Delhi",
+                type: "Virtual Office",
+                price: 1499,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&q=80&w=600",
+                badge: "Airport Hub"
+            },
+            {
+                id: 6,
+                title: "Nehru Place IT Workspace Desk",
+                city: "Delhi",
+                locality: "Nehru Place, South Delhi",
+                type: "Coworking Desk",
+                price: 5499,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=600",
+                badge: "South Delhi Core"
+            },
+            {
+                id: 7,
+                title: "Smartworks Corporate Park",
+                city: "Delhi",
+                locality: "Sector 125, Noida Expressway",
+                type: "Private Cabin",
+                price: 12999,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=600",
+                badge: "Enterprise Grade"
+            },
+            {
+                id: 8,
+                title: "CoWrksmg Road Premium Desks",
+                city: "Delhi",
+                locality: "Ambience Island, NH-8, Gurugram",
+                type: "Coworking Desk",
+                price: 7999,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600",
+                badge: "NH-8 Hub"
+            },
+
+            // Mumbai
+            {
+                id: 9,
+                title: "BKC Capital Coworking Tower",
+                city: "Mumbai",
+                locality: "Bandra Kurla Complex (BKC), Mumbai",
+                type: "Coworking Desk",
+                price: 8999,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=600",
+                badge: "Financial District"
+            },
+            {
+                id: 10,
+                title: "Lower Parel Virtual Corporate Address",
+                city: "Mumbai",
+                locality: "Peninsula Business Park, Lower Parel, Mumbai",
+                type: "Virtual Office",
+                price: 1599,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=600",
+                badge: "Instant GST"
+            },
+            {
+                id: 11,
+                title: "Andheri East WeWork Workspace",
+                city: "Mumbai",
+                locality: "Marol, Andheri East, Mumbai",
+                type: "Private Cabin",
+                price: 13999,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=600",
+                badge: "Airport Proximity"
+            },
+
+            // Bengaluru
+            {
+                id: 12,
+                title: "Indiranagar Tech Hub Coworking",
+                city: "Bengaluru",
+                locality: "100 Feet Road, Indiranagar, Bengaluru",
+                type: "Coworking Desk",
+                price: 6499,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600",
+                badge: "Startup Hub"
+            },
+            {
+                id: 13,
+                title: "Koramangala Virtual Office & Mail Desk",
+                city: "Bengaluru",
+                locality: "80 Feet Road, Koramangala, Bengaluru",
+                type: "Virtual Office",
+                price: 1199,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=600",
+                badge: "MCA & GST Ready"
+            },
+            {
+                id: 14,
+                title: "Whitefield Global Tech Park Office",
+                city: "Bengaluru",
+                locality: "EPIP Zone, Whitefield, Bengaluru",
+                type: "Private Cabin",
+                price: 12499,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=600",
+                badge: "IT Park"
+            },
+
+            // Hyderabad
+            {
+                id: 15,
+                title: "HITEC City Cyber Towers Desk",
+                city: "Hyderabad",
+                locality: "HITEC City, Madhapur, Hyderabad",
+                type: "Coworking Desk",
+                price: 5299,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1577412647305-991150c7d163?auto=format&fit=crop&q=80&w=600",
+                badge: "IT Corridor"
+            },
+            {
+                id: 16,
+                title: "Gachibowli Financial District Virtual Suite",
+                city: "Hyderabad",
+                locality: "Financial District, Gachibowli, Hyderabad",
+                type: "Virtual Office",
+                price: 1399,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=600",
+                badge: "Verified Address"
+            },
+
+            // Pune
+            {
+                id: 17,
+                title: "Viman Nagar Executive Workspace",
+                city: "Pune",
+                locality: "Viman Nagar, Near Airport, Pune",
+                type: "Private Cabin",
+                price: 11999,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=600",
+                badge: "Ready-to-Move"
+            },
+            {
+                id: 18,
+                title: "Baner IT Coworking Desk",
+                city: "Pune",
+                locality: "Baner Road, Pune",
+                type: "Coworking Desk",
+                price: 4999,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?auto=format&fit=crop&q=80&w=600",
+                badge: "Tech Zone"
+            },
+
+            // Chennai
+            {
+                id: 19,
+                title: "OMR IT Expressway Coworking",
+                city: "Chennai",
+                locality: "Old Mahabalipuram Road (OMR), Chennai",
+                type: "Coworking Desk",
+                price: 4799,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600",
+                badge: "IT Corridor"
+            },
+
+            // Kolkata
+            {
+                id: 20,
+                title: "Salt Lake Sector V Virtual Office",
+                city: "Kolkata",
+                locality: "Sector V, Salt Lake City, Kolkata",
+                type: "Virtual Office",
+                price: 1299,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=600",
+                badge: "Tech Hub"
+            },
+
+            // Ahmedabad
+            {
+                id: 21,
+                title: "SG Highway Corporate Coworking",
+                city: "Ahmedabad",
+                locality: "Sarkhej-Gandhinagar Highway, Ahmedabad",
+                type: "Coworking Desk",
+                price: 4599,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=600",
+                badge: "Business District"
+            },
+
+            // Jaipur & Chandigarh
+            {
+                id: 22,
+                title: "C-Scheme Jaipur Virtual Office",
+                city: "Jaipur",
+                locality: "C-Scheme, Ashok Nagar, Jaipur",
+                type: "Virtual Office",
+                price: 1199,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&q=80&w=600",
+                badge: "Prime Jaipur"
+            },
+            {
+                id: 23,
+                title: "IT Park Chandigarh Coworking Hub",
+                city: "Chandigarh",
+                locality: "Rajiv Gandhi Chandigarh Technology Park",
+                type: "Coworking Desk",
+                price: 5199,
+                contact: "7906824135",
+                image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=600",
+                badge: "North Hub"
+            }
+        ];
+
+        let workspaces = JSON.parse(localStorage.getItem('space_bazaar_all_listings')) || initialSpaces;
+
+        function renderListings(data) {
+            const grid = document.getElementById('listingsGrid');
+            const countEl = document.getElementById('activeCount');
+            grid.innerHTML = '';
+            
+            countEl.textContent = data.length;
+
+            if (data.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-slate-900 border border-slate-800 rounded-2xl">
+                        <i class="fa-solid fa-building-circle-exclamation text-4xl text-slate-600 mb-3"></i>
+                        <h3 class="text-lg font-bold text-white">No spaces match your filter criteria</h3>
+                        <p class="text-xs text-slate-400 mt-1">Try clearing filters or call our helpline directly for customized office solutions.</p>
+                        <a href="tel:7906824135" class="inline-block mt-4 bg-emerald-500 text-slate-950 font-black text-xs px-4 py-2 rounded-lg">Call Support: 7906824135</a>
+                    </div>
+                `;
+                return;
+            }
+
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl overflow-hidden card-hover flex flex-col justify-between";
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-bold text-emerald-400 border border-emerald-500/30 uppercase">
+                                ${item.type}
+                            </div>
+                            <div class="absolute top-3 right-3 bg-emerald-500 text-slate-950 font-black text-[10px] px-2 py-0.5 rounded shadow">
+                                ${item.badge || 'Verified'}
+                            </div>
+                        </div>
+
+                        <div class="p-5">
+                            <div class="text-xs text-emerald-400 font-semibold mb-1 flex items-center gap-1">
+                                <i class="fa-solid fa-location-dot"></i> ${item.city} NCR / Hub
+                            </div>
+                            <h3 class="font-bold text-white text-base mb-2 line-clamp-1">${item.title}</h3>
+                            <p class="text-xs text-slate-400 line-clamp-2 mb-4"><i class="fa-solid fa-map-pin mr-1 text-slate-500"></i> ${item.locality}</p>
+
+                            <div class="flex items-center justify-between border-t border-slate-800 pt-4 mt-2">
+                                <div>
+                                    <span class="text-[10px] text-slate-500 uppercase font-semibold block">Starts From</span>
+                                    <span class="text-xl font-extrabold text-white">₹${Number(item.price).toLocaleString('en-IN')} <span class="text-xs font-normal text-slate-400">/mo</span></span>
+                                </div>
+                                <span class="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded border border-slate-700"><i class="fa-solid fa-bolt text-amber-400"></i> Fast Docs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-5 pt-0 grid grid-cols-2 gap-2 mt-4">
+                        <a href="tel:${item.contact}" class="bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs py-2.5 rounded-lg text-center transition flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-phone text-xs"></i> Call Now
+                        </a>
+                        <a href="https://wa.me/91${item.contact}?text=Hi%20Space%20Bazaar,%20I%20am%20interested%20in%20${encodeURIComponent(item.title)}" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold text-xs py-2.5 rounded-lg text-center transition flex items-center justify-center gap-1">
+                            <i class="fa-brands fa-whatsapp"></i> Enquire
+                        </a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterListings() {
+            const city = document.getElementById('searchCity').value;
+            const type = document.getElementById('searchType').value;
+            const keyword = document.getElementById('searchKeyword').value.toLowerCase();
+
+            const filtered = workspaces.filter(item => {
+                const matchesCity = (city === 'All') || (item.city.toLowerCase() === city.toLowerCase());
+                const matchesType = (type === 'All') || (item.type.toLowerCase() === type.toLowerCase());
+                const matchesKeyword = item.title.toLowerCase().includes(keyword) || item.locality.toLowerCase().includes(keyword);
+
+                return matchesCity && matchesType && matchesKeyword;
+            });
+
+            renderListings(filtered);
+        }
+
+        function selectCityFilter(cityName) {
+            document.getElementById('searchCity').value = cityName;
+            filterListings();
+            document.getElementById('listings').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function openAddModal() {
+            document.getElementById('addModal').classList.remove('hidden');
+        }
+
+        function closeAddModal() {
+            document.getElementById('addModal').classList.add('hidden');
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const newSpace = {
+                id: Date.now(),
+                title: document.getElementById('title').value,
+                city: document.getElementById('city').value,
+                locality: document.getElementById('locality').value,
+                type: document.getElementById('type').value,
+                price: Number(document.getElementById('price').value),
+                contact: document.getElementById('contactNumber').value || "7906824135",
+                image: document.getElementById('image').value || "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600",
+                badge: "Newly Added"
+            };
+
+            workspaces.unshift(newSpace);
+            localStorage.setItem('space_bazaar_all_listings', JSON.stringify(workspaces));
+            
+            closeAddModal();
+            document.getElementById('addListingForm').reset();
+            
+            filterListings();
+            alert("Success! Your space has been successfully added to Space Bazaar.");
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderListings(workspaces);
+        });
+    </script>
+</body>
+</html>
